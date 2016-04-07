@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Doppelchecker.Views.ShipView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Doppelchecker.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="40" d:DesignWidth="75">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../ViewStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="ShipMemberBackGroundStyle" TargetType="{x:Type Grid}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Ship.IsMember}" Value="true">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding Ship.IsMember}" Value="false">
+                        <Setter Property="Background" Value="DarkRed"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityr" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Visibility>
+        <Binding Path="Ship.IsImplemented" Converter="{StaticResource BooleanToVisibilityr}" />
+    </UserControl.Visibility>
+
+    <Grid Margin="5" Style="{DynamicResource ShipMemberBackGroundStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Style="{DynamicResource DefaultTextStyleKey}"
+                   HorizontalAlignment="Left">
+            <TextBlock.Text>
+                <MultiBinding StringFormat=" {0} {1}型">
+                    <Binding Path="Ship.ShipClassName" />
+                    <Binding Path="Ship.ShipTypeName" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+
+        <TextBlock Grid.Row="1"
+                   Style="{DynamicResource EmphaticTextStyleKey}"
+                   HorizontalAlignment="Center"
+                   Text="{Binding Ship.ShipName}" />
+
+        <TextBlock Grid.Row="2"
+                   Style="{DynamicResource DefaultTextStyleKey}"
+                   HorizontalAlignment="Right"
+                   Text="{Binding Ship.ShipTypeNumber, StringFormat={}{0}番艦}" />
+    </Grid>
+</UserControl>
