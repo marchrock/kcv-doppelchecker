@@ -230,3 +230,10 @@ ShipClassName,ShipTypeName,ShipTypeNumber,ShipName,IsImplemented
 工作艦,明石,1,明石,TRUE
 潜水母艦,大鯨,1,大鯨,TRUE
 給油艦,速吸,1,速吸,TRUE
+潜水艦,海大VI型a,1,伊168,TRUE
+潜水艦,巡潜3型,2,伊8,TRUE
+潜水艦,巡潜乙型,3,伊19,TRUE
+潜水艦,巡潜乙型改二,3,伊58,TRUE
+潜水艦,UボートIXC,41,U-511,TRUE
+潜水艦,三式潜航輸送艇,0,まるゆ,TRUE
+潜水空母,潜特型,2,伊401,TRUE
