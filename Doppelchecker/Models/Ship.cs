@@ -124,6 +124,28 @@ namespace Doppelchecker.Models
             }
         }
         #endregion
+
+        #region ShipNameVariable変更通知プロパティ
+        private string _shipNameVariation;
+
+        /// <summary>
+        /// 艦名変更艦艇用
+        /// Currently, This field only support one time namechange (e.g. IJN 大鯨 -> IJN 龍鳳).
+        /// For multiple time namechange (e.g. SMS Goeben), I think master data also has to be changed to JSON or other related.
+        /// </summary>
+        public string ShipNameVariation
+        {
+            get
+            { return _shipNameVariation; }
+            set
+            {
+                if (_shipNameVariation == value)
+                    return;
+                _shipNameVariation = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
     }
 
     public sealed class ShipMap : CsvClassMap<Ship>
