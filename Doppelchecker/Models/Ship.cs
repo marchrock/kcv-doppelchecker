@@ -125,7 +125,7 @@ namespace Doppelchecker.Models
         }
         #endregion
 
-        #region ShipNameVariable変更通知プロパティ
+        #region ShipNameVariation変更通知プロパティ
         private string _shipNameVariation;
 
         /// <summary>
