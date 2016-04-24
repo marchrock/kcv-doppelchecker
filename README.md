@@ -8,9 +8,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/om3tx5a5sr6f1cke/branch/master?svg=true)](https://ci.appveyor.com/project/MarchRock/kcv-doppelchecker/build/artifacts)
 
 ## Install
-* `ReactiveProperty.dll`, `ReactiveProperty.NET45.dll`, `ReactiveProperty.DataAnnotations.dll` を `KanColleViewer.exe` と同じディレクトリにコピーしてください。
-* `Doppelchecker.dll` を KanColleViewer の Plugin フォルダにコピーしてください。
-* `ShipListMaster.csv` を KanColleViewer に static フォルダを作成してその中にコピーしてください。
+* `Doppelchecker.zip` を `KanColleViewer.exe` と同じディレクトリに解凍してください。
 
 ## Libraries List
 #### [KanColleViewer](https://github.com/Grabacr07/KanColleViewer)
