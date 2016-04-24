@@ -156,7 +156,8 @@ namespace Doppelchecker.Models
             Map(m => m.ShipTypeName).Index(1);
             Map(m => m.ShipTypeNumber).Index(2);
             Map(m => m.ShipName).Index(3);
-            Map(m => m.IsImplemented).Index(4);
+            Map(m => m.ShipNameVariation).Index(4);
+            Map(m => m.IsImplemented).Index(5);
         }
     }
 }
