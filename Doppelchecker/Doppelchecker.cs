@@ -80,7 +80,7 @@ namespace Doppelchecker
                 splitIndex = splitIndex == -1 ? shipName.IndexOf(' ') : splitIndex;
 
                 var purifiedShipName = splitIndex >= 0 ? shipName.Substring(0, splitIndex) : shipName;
-                var shipEnumerable = _viewModel.ShipList.Where(x => x.Ship.ShipName == purifiedShipName).Select(x => x.Ship);
+                var shipEnumerable = _viewModel.ShipList.Where(x => x.Ship.ShipName == purifiedShipName || x.Ship.ShipNameVariation == purifiedShipName).Select(x => x.Ship);
                 if (shipEnumerable.Any())
                 {
                     shipEnumerable.First().IsMember = true;
