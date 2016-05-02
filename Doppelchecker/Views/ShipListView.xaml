@@ -54,9 +54,14 @@
                     <GridViewColumn Header="艦型" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Ship.ShipTypeName, StringFormat={}{0}型}"
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Ship.ShipTypeName, StringFormat={}{0}型}"
                                            Style="{DynamicResource DefaultTextStyleKey}"
-                                           HorizontalAlignment="Center"/>
+                                           HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding Ship.ShipTypeNumber, StringFormat={}{0}番艦}"
+                                           Style="{DynamicResource DetailTextStyleKey}"
+                                           HorizontalAlignment="Right"/>
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -64,7 +69,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Ship.ShipName}"
-                                           Style="{DynamicResource DefaultTextStyleKey}"
+                                           Style="{DynamicResource EmphaticTextStyleKey}"
                                            HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
