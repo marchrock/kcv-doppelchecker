@@ -1,4 +1,13 @@
 ShipClassName,ShipTypeName,ShipTypeNumber,ShipName,ShipNameVariation,IsImplemented
+駆逐艦,神風,1,神風,,TRUE
+駆逐艦,神風,2,朝風,,FALSE
+駆逐艦,神風,3,春風,,TRUE
+駆逐艦,神風,4,松風,,FALSE
+駆逐艦,神風,5,旗風,,FALSE
+駆逐艦,神風,6,追風,,FALSE
+駆逐艦,神風,7,疾風,,FALSE
+駆逐艦,神風,8,朝凪,,FALSE
+駆逐艦,神風,9,夕凪,,FALSE
 駆逐艦,睦月,1,睦月,,TRUE
 駆逐艦,睦月,2,如月,,TRUE
 駆逐艦,睦月,3,弥生,,TRUE
@@ -66,7 +75,7 @@ ShipClassName,ShipTypeName,ShipTypeNumber,ShipName,ShipNameVariation,IsImplement
 駆逐艦,陽炎,3,黒潮,,TRUE
 駆逐艦,陽炎,4,雪風,,TRUE
 駆逐艦,陽炎,5,初風,,TRUE
-駆逐艦,陽炎,6,親潮,,FALSE
+駆逐艦,陽炎,6,親潮,,TRUE
 駆逐艦,陽炎,7,夏潮,,FALSE
 駆逐艦,陽炎,8,早潮,,FALSE
 駆逐艦,陽炎,9,天津風,,TRUE
@@ -176,9 +185,10 @@ ShipClassName,ShipTypeName,ShipTypeNumber,ShipName,ShipNameVariation,IsImplement
 重巡洋艦,Zara,1,Zara,,TRUE
 重巡洋艦,Zara,2,Fiume,,FALSE
 重巡洋艦,Zara,3,Gorizia,,FALSE
-重巡洋艦,Zara,4,Pola,,FALSE
+重巡洋艦,Zara,4,Pola,,TRUE
 防空巡洋艦,荒島,1,荒島,,FALSE
 防空巡洋艦,荒島,2,石鎚,,FALSE
+防空巡洋艦,大峰,1,大峰,,FALSE
 巡洋戦艦,金剛,1,金剛,,TRUE
 巡洋戦艦,金剛,2,比叡,,TRUE
 巡洋戦艦,金剛,3,榛名,,TRUE
