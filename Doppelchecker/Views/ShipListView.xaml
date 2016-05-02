@@ -16,9 +16,6 @@
             <Style x:Key="ShipViewItemStyle" TargetType="{x:Type ListViewItem}"
                    BasedOn="{StaticResource GridViewItemContainerStyleKey}">
                 <Style.Triggers>
-                    <DataTrigger Binding="{Binding Ship.IsMember}" Value="true">
-                        <Setter Property="Background" Value="Transparent"/>
-                    </DataTrigger>
                     <DataTrigger Binding="{Binding Ship.IsMember}" Value="false">
                         <Setter Property="Background" Value="DarkRed"/>
                     </DataTrigger>
@@ -37,46 +34,90 @@
     </UserControl.Resources>
 
     <Grid>
-        <ListView ItemsSource="{Binding ShipList}"
-                  ItemContainerStyle="{StaticResource ShipViewItemStyle}"
-                  ScrollViewer.PanningMode="Both">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="艦種" Width="90">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Ship.ShipClassName}"
-                                           Style="{DynamicResource DefaultTextStyleKey}"
-                                           HorizontalAlignment="Center"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="艦型" Width="120">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Ship.ShipTypeName, StringFormat={}{0}型}"
-                                           Style="{DynamicResource DefaultTextStyleKey}"
-                                           HorizontalAlignment="Left"/>
-                                    <TextBlock Text="{Binding Ship.ShipTypeNumber, StringFormat={}{0}番艦}"
-                                           Style="{DynamicResource DetailTextStyleKey}"
-                                           HorizontalAlignment="Right"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Header="艦名" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Ship.ShipName}"
-                                           Style="{DynamicResource EmphaticTextStyleKey}"
-                                           HorizontalAlignment="Center"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Border BorderBrush="{DynamicResource BorderBrushKey}"
+                BorderThickness=".99"
+                Margin="8">
+
+            <ListView ItemsSource="{Binding ShipList}"
+                      ItemContainerStyle="{StaticResource ShipViewItemStyle}"
+                      ScrollViewer.PanningMode="Both">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin"
+                                Value="5,4" />
+                    </Style>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="OverridesDefaultStyle"
+                                Value="True" />
+                        <Setter Property="BorderThickness"
+                                Value="0,0,0,.99" />
+                        <Setter Property="BorderBrush"
+                                Value="{DynamicResource BorderBrushKey}" />
+                        <Setter Property="Background"
+                                Value="{DynamicResource BackgroundBrushKey}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                    <Grid>
+                                        <Border BorderThickness="{TemplateBinding BorderThickness}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                Background="{TemplateBinding Background}">
+                                            <ContentPresenter Margin="{TemplateBinding Padding}" />
+                                        </Border>
+                                        <Thumb x:Name="PART_HeaderGripper"
+                                               HorizontalAlignment="Right"
+                                               BorderBrush="{TemplateBinding BorderBrush}"
+                                               Margin="0,0,-6,0">
+                                            <Thumb.Template>
+                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                    <Border Background="Transparent"
+                                                            Width="13">
+                                                        <Rectangle Width=".99"
+                                                                   Stroke="{TemplateBinding BorderBrush}" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="艦種" Width="90">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Ship.ShipClassName}"
+                                               Style="{DynamicResource DefaultTextStyleKey}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="艦型" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Ship.ShipTypeName, StringFormat={}{0}型}"
+                                                   Style="{DynamicResource DefaultTextStyleKey}"/>
+                                        <TextBlock Text="{Binding Ship.ShipTypeNumber, StringFormat={}{0}番艦}"
+                                                   Style="{DynamicResource DetailTextStyleKey}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="艦名" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Ship.ShipName}"
+                                               Style="{DynamicResource EmphaticTextStyleKey}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
     </Grid>
 
 </UserControl>

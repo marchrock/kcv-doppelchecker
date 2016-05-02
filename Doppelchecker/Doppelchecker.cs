@@ -53,7 +53,10 @@ namespace Doppelchecker
                 {
                     var ship = new ShipViewModel();
                     ship.Ship = record;
-                    _viewModel.ShipList.Add(ship);
+                    if (ship.Ship.IsImplemented)
+                    {
+                        _viewModel.ShipList.Add(ship);
+                    }
                 }
             }
         }
