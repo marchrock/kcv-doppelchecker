@@ -20,7 +20,7 @@ namespace Doppelchecker
 {
     [ExportMetadata("Title", "Doppelchecker")]
     [ExportMetadata("Description", "艦娘の所属状況を表示します。")]
-    [ExportMetadata("Version", "0.1.0")]
+    [ExportMetadata("Version", "0.5.0")]
     [ExportMetadata("Author", "@hgzr")]
     [ExportMetadata("Guid", "E2FBF552-0797-464B-BB01-B39A6571C4F9")]
     [Export(typeof(IPlugin))]
