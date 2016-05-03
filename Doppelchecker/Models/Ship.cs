@@ -1,10 +1,17 @@
-﻿using CsvHelper.Configuration;
+﻿using System.Collections.Generic;
+using CsvHelper.Configuration;
 using Livet;
 
 namespace Doppelchecker.Models
 {
     public class Ship : NotificationObject
     {
+        public Ship()
+        {
+            MemberShipsId = new ObservableSynchronizedCollection<int>();
+            LockedMemberShipsId = new ObservableSynchronizedCollection<int>();
+        }
+
         #region ShipClassName変更通知プロパティ
         private string _shipClassName;
 
@@ -142,6 +149,40 @@ namespace Doppelchecker.Models
                 if (_shipNameVariation == value)
                     return;
                 _shipNameVariation = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
+        #region MemberShipsId変更通知プロパティ
+        private ObservableSynchronizedCollection<int> _memberShipsId;
+
+        public ObservableSynchronizedCollection<int> MemberShipsId
+        {
+            get
+            { return _memberShipsId; }
+            set
+            {
+                if (_memberShipsId == value)
+                    return;
+                _memberShipsId = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
+        #region LockedMemberShipsId変更通知プロパティ
+        private ObservableSynchronizedCollection<int> _lockedMemberShipsId;
+
+        public ObservableSynchronizedCollection<int> LockedMemberShipsId
+        {
+            get
+            { return _lockedMemberShipsId; }
+            set
+            {
+                if (_lockedMemberShipsId == value)
+                    return;
+                _lockedMemberShipsId = value;
                 RaisePropertyChanged();
             }
         }

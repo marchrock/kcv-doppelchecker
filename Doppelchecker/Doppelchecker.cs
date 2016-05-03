@@ -83,10 +83,19 @@ namespace Doppelchecker
                 splitIndex = splitIndex == -1 ? shipName.IndexOf(' ') : splitIndex;
 
                 var purifiedShipName = splitIndex >= 0 ? shipName.Substring(0, splitIndex) : shipName;
-                var shipEnumerable = _viewModel.ShipList.Where(x => x.Ship.ShipName == purifiedShipName || x.Ship.ShipNameVariation == purifiedShipName).Select(x => x.Ship);
-                if (shipEnumerable.Any())
+                var shipViewModelList = _viewModel.ShipList.Where(x => x.Ship.ShipName == purifiedShipName || x.Ship.ShipNameVariation == purifiedShipName).Select(x => x);
+                if (shipViewModelList.Any())
                 {
-                    shipEnumerable.First().IsMember = true;
+                    var shipViewModel = shipViewModelList.First();
+                    var shipModel = shipViewModel.Ship;
+                    shipModel.IsMember = true;
+
+                    var shipIdIndex = shipModel.MemberShipsId.IndexOf(ship.Id);
+                    if (shipIdIndex < 0) shipModel.MemberShipsId.Add(ship.Id);
+
+                    var shipIdLockedIndex = shipModel.LockedMemberShipsId.IndexOf(ship.Id);
+                    if (shipIdLockedIndex < 0 && ship.IsLocked) shipModel.LockedMemberShipsId.Add(ship.Id);
+                    if (shipIdLockedIndex >= 0 && !ship.IsLocked) shipModel.LockedMemberShipsId.Remove(ship.Id);
                 }
             }
         }

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Doppelchecker.Views"
+             xmlns:conv="clr-namespace:Doppelchecker.Views.Converters"
              xmlns:vm="clr-namespace:Doppelchecker.ViewModels"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
@@ -13,9 +14,13 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../ViewStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <conv:IntToBoolConverter x:Key="IntToBoolConverter"/>
             <Style x:Key="ShipViewItemStyle" TargetType="{x:Type ListViewItem}"
                    BasedOn="{StaticResource GridViewItemContainerStyleKey}">
                 <Style.Triggers>
+                    <DataTrigger Binding="{Binding Ship.LockedMemberShipsId.Count, Converter={StaticResource IntToBoolConverter}}" Value="false">
+                        <Setter Property="Background" Value="DarkGoldenrod"/>
+                    </DataTrigger>
                     <DataTrigger Binding="{Binding Ship.IsMember}" Value="false">
                         <Setter Property="Background" Value="DarkRed"/>
                     </DataTrigger>
@@ -111,6 +116,26 @@
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Ship.ShipName}"
                                                Style="{DynamicResource EmphaticTextStyleKey}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="所属人数" Width="60">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Ship.MemberShipsId.Count, StringFormat={}{0}人}"
+                                                   Style="{DynamicResource EmphaticTextStyleKey}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="ロック済" Width="60">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Ship.LockedMemberShipsId.Count, StringFormat={}{0}人}"
+                                                   Style="{DynamicResource EmphaticTextStyleKey}"/>
+                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

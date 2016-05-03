@@ -151,6 +151,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ShipListViewModel.cs" />
     <Compile Include="ViewModels\ShipViewModel.cs" />
+    <Compile Include="Views\Converters\IntToBoolConverter.cs" />
     <Compile Include="Views\ShipListView.xaml.cs">
       <DependentUpon>ShipListView.xaml</DependentUpon>
     </Compile>
